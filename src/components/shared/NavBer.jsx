@@ -17,10 +17,7 @@ const NavBer = () => {
 
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
-      {/* Wrapping with container and responsive padding */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16 lg:h-20">
-        {/* 1. Desktop Left Links (Hidden on Mobile) */}
-        {/* flex-1 logic logo-ke center-e rakhte help korbe */}
         <ul className="hidden lg:flex items-center gap-8 flex-1">
           <li>
             <Link href="/" className={linkStyle("/")}>
@@ -78,7 +75,7 @@ const NavBer = () => {
         </div>
 
         {/* 4. Mobile Menu Button (Only Visible on Mobile) */}
-        {/* justify-between er karone eta ekbare Right-e thakbe */}
+
         <div className="dropdown dropdown-end lg:hidden">
           <label tabIndex={0} className="btn btn-ghost  px-2">
             <svg

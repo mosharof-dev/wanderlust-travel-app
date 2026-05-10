@@ -31,8 +31,8 @@ const Banner = () => {
         </div>
       </div>
       {/* Bottom Search Bar t */}
-      <div className="relative z-10 w-full container px-4 sm:px-6 lg:px-8  mt-12">
-        <div className="bg-white/20 backdrop-blur-md flex flex-col lg:flex-row items-center border border-white/20 shadow-lg">
+      <div className="relative z-10 w-full  container px-4 sm:px-6 lg:px-8  mt-12">
+        <div className="bg-white/20 backdrop-blur-md flex flex-col lg:flex-row items-center border border-white/20 shadow-lg h-18">
           <div className="flex flex-col lg:flex-row w-full lg:flex-1 h-full items-center">
             {/* Location */}
             <div className="flex-1 w-full flex flex-col justify-center px-8 py-5 lg:h-24 text-left">
@@ -45,7 +45,7 @@ const Banner = () => {
             </div>
 
             {/* Separator */}
-            <div className="hidden lg:block w-1 h-25 bg-white/40"></div>
+            <div className="hidden lg:block  w-px h-18 bg-white/40"></div>
             <div className="block lg:hidden w-full h-px bg-white/20"></div>
 
             {/* Date/Duration */}
@@ -59,7 +59,7 @@ const Banner = () => {
             </div>
 
             {/* Separator */}
-            <div className="hidden lg:block w-1 h-25 bg-white/40"></div>
+            <div className="hidden lg:block  w-px h-18 bg-white/40"></div>
             <div className="block lg:hidden w-full h-px bg-white/20"></div>
 
             {/* Budget */}
@@ -73,7 +73,7 @@ const Banner = () => {
             </div>
 
             {/* Separator */}
-            <div className="hidden lg:block w-1 h-25 bg-white/40"></div>
+            <div className="hidden lg:block w-px h-18 bg-white/40"></div>
             <div className="block lg:hidden w-full h-px bg-white/20"></div>
 
             {/* People */}
@@ -88,7 +88,7 @@ const Banner = () => {
           </div>
 
           {/* Search Button */}
-          <button className="bg-cyan-500 text-white font-bold text-lg px-12 py-5 lg:py-0 w-full lg:w-auto lg:h-24 hover:bg-cyan-600 transition flex items-center justify-center">
+          <button className="bg-cyan-500 text-white font-bold text-lg px-12 py-5 lg:py-0 w-full lg:w-auto lg:h-18 hover:bg-cyan-600 transition flex items-center justify-center">
             Search
           </button>
         </div>
