@@ -4,9 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 const DestinationCard = ({ data }) => {
   return (
-    <div className="flex flex-col group w-full bg-red-50 ">
+    <div className="flex flex-col group w-full bg-gray-50 border-gray-100 shadow-lg rounded-xl ">
       {/* Image Container */}
-      <div className="relative w-full h-56 overflow-hidden bg-gray-100">
+      <div className="relative w-full h-56 overflow-hidden bg-gray-100 rounded-t-xl">
         <Image
           src={data.imageUrl}
           alt={data.destinationName}
@@ -43,7 +43,7 @@ const DestinationCard = ({ data }) => {
         {/* Book Now Button */}
         <Link
           href={`/destinations/${data._id}`}
-          className="text-[#38bdf8] font-medium text-sm flex items-center gap-1 uppercase tracking-wide mt-2 w-fit hover:text-[#0284c7] transition-colors"
+          className="text-[#38bdf8] font-medium text-sm flex items-center gap-1 uppercase tracking-wide mt-2 w-fit hover:text-[#0284c7] transition-colors hover:underline"
         >
           BOOK NOW
           <svg
