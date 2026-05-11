@@ -13,11 +13,20 @@ import React from "react";
 import { RiDeleteBin5Line, RiSaveLine } from "react-icons/ri";
 
 const AdminDashboard = () => {
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
     console.log("Form data:", data);
+    const res = await fetch("http://localhost:5000/destinations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    console.log(result);
   };
   return (
     <div className=" min-h-screen bg-gray-50 py-10 px-4 flex justify-center">
