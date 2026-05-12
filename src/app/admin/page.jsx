@@ -9,6 +9,7 @@ import {
   TextArea,
   ListBox,
 } from "@heroui/react";
+import { redirect } from "next/navigation";
 import React from "react";
 import { RiDeleteBin5Line, RiSaveLine } from "react-icons/ri";
 
@@ -26,6 +27,7 @@ const AdminDashboard = () => {
       body: JSON.stringify(data),
     });
     const result = await res.json();
+    redirect("/destinations");
     console.log(result);
   };
   return (

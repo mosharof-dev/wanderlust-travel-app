@@ -1,9 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { IoArrowBackSharp } from "react-icons/io5";
-import { CiEdit } from "react-icons/ci";
+
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { FaCalendarAlt, FaCheck, FaStar } from "react-icons/fa";
+import EditModal from "@/components/home/EditModal";
+import Delete from "@/components/home/Delete";
 const DetailPage = async ({ params }) => {
   // 1. Backend Logic
   const { id } = await params;
@@ -25,14 +27,8 @@ const DetailPage = async ({ params }) => {
           Back to Destinations
         </Link>
         <div className="flex gap-3">
-          <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
-            <CiEdit className="w-4 h-4" />
-            Edit
-          </button>
-          <button className="flex items-center gap-2 px-4 py-2 border border-red-200 text-red-500 rounded text-sm font-medium hover:bg-red-50 transition-colors">
-            <RiDeleteBin5Line className="w-4 h-4" />
-            Cancel
-          </button>
+          <EditModal data={data} />
+          <Delete data={data} />
         </div>
       </div>
 
