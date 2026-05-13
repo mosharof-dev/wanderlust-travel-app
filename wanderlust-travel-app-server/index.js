@@ -29,7 +29,17 @@ const run = async () => {
 
     const admin = client.db("wanderlust-database");
     const adminCollection = admin.collection("admin");
-    
+    const bookingCollection = admin.collection("booking");
+
+    app.post("/bookings", async (req, res) => {
+      const data = req.body;
+      console.log(data, "data");
+      const result = await bookingCollection.insertOne(data);
+      console.log(result, "result");
+      res.send(result);
+    });
+
+    //  DESTINATION API
     app.get("/destinations", async (req, res) => {
       const result = await adminCollection.find().toArray();
 
@@ -44,12 +54,12 @@ const run = async () => {
     });
     // Update API
     app.patch("/destinations/:id", async (req, res) => {
-      const {id} = req.params;
+      const { id } = req.params;
       const updateData = req.body;
       console.log(updateData, "updateData");
       const result = await adminCollection.updateOne(
         { _id: new ObjectId(id) },
-        { $set: updateData }
+        { $set: updateData },
       );
       res.send(result);
     });
@@ -58,8 +68,8 @@ const run = async () => {
       const id = req.params.id;
       const result = await adminCollection.deleteOne({ _id: new ObjectId(id) });
       res.send(result);
-      });
-      
+    });
+
     //  ADMIN CRUD
     app.post("/destinations", async (req, res) => {
       const data = req.body;

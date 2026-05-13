@@ -9,7 +9,7 @@ const NavBer = () => {
   const pathname = usePathname();
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
-  console.log(user, "user data");
+  // console.log(user, "user data");
 
   const handleLogout = async () => {
     await authClient.signOut();
@@ -168,9 +168,11 @@ const NavBer = () => {
                   >
                     <div className="relative w-10 h-10 rounded-full border-2 border-[#15A1BF] overflow-hidden shrink-0">
                       {user?.image ? (
-                        <img
+                        <Image
                           src={user.image}
                           alt="User"
+                          width={40}
+                          height={40}
                           className="w-full h-full object-cover"
                         />
                       ) : (

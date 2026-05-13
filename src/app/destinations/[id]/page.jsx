@@ -2,10 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoArrowBackSharp } from "react-icons/io5";
 
-import { RiDeleteBin5Line } from "react-icons/ri";
-import { FaCalendarAlt, FaCheck, FaStar } from "react-icons/fa";
+import { FaCalendarAlt, FaStar } from "react-icons/fa";
 import EditModal from "@/components/home/EditModal";
 import Delete from "@/components/home/Delete";
+import BookingCard from "@/components/home/BookingCard";
+
 const DetailPage = async ({ params }) => {
   // 1. Backend Logic
   const { id } = await params;
@@ -147,54 +148,7 @@ const DetailPage = async ({ params }) => {
 
         {/* Right Side: Booking Card */}
         <div className="lg:w-90 w-full">
-          <div className="border border-gray-100 bg-white rounded-lg p-6 shadow-sm sticky top-8">
-            <p className="text-sm text-gray-500 mb-1">Starting from</p>
-            <div className="flex flex-col mb-6">
-              <span className="text-4xl font-semibold text-[#14b8a6]">
-                ${data.price}
-              </span>
-              <span className="text-xs text-gray-400 mt-1">per person</span>
-            </div>
-
-            {/* Date Picker Input Placeholder */}
-            <div className="bg-gray-50 p-3 rounded mb-6 text-sm text-gray-700 font-medium border border-gray-100">
-              {data.departureDate}
-            </div>
-
-            <button className="w-full bg-[#14b8a6] hover:bg-[#0d9488] text-white font-medium py-3 rounded transition-colors flex justify-center items-center gap-2 mb-6">
-              Book Now
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </button>
-
-            {/* Perks */}
-            <div className="flex flex-col gap-3">
-              {[
-                "Free cancellation up to 7 days",
-                "Travel insurance included",
-                "24/7 customer support",
-              ].map((perk, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 text-xs text-gray-500"
-                >
-                  <FaCheck className="w-4 h-4 text-green-500 shrink-0" />
-                  {perk}
-                </div>
-              ))}
-            </div>
-          </div>
+          <BookingCard data={data} />
         </div>
       </div>
     </main>
