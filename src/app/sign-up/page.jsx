@@ -1,28 +1,55 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
   Form,
+  Input,
   InputGroup,
   Label,
   TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
-import { BiUser, BiEnvelope, BiLockAlt } from "react-icons/bi";
+import { BiUser, BiEnvelope, BiLockAlt, BiImageAdd } from "react-icons/bi";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "sonner";
 
 const SignUp = () => {
+  const router = useRouter();
   const [password, setPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+    const user = Object.fromEntries(formData.entries());
 
-    // Send 'data' to backend API route
-    console.log("Form Data:", data);
+    const { data, error } = await authClient.signUp.email({
+      name: user.fullName,
+      photoURL: user.photoURL,
+      email: user.email,
+      password: user.password,
+      callbackURL: "/login",
+    });
+    if (error) {
+      toast.error(
+        `Registration Failed: ${error.message || "Something went wrong!"}`,
+      );
+      console.log("Error details:", error);
+      return;
+    }
+    if (data) {
+      toast.success("Registration Successful! 🎉 Please login to continue.");
+      await authClient.signOut();
+
+      // 4. Redirect to login page
+      router.push("/login");
+    }
+
+    console.log(data, error);
   };
 
   return (
@@ -67,6 +94,33 @@ const SignUp = () => {
               <FieldError />
             </TextField>
 
+            {/* Photo URL Field */}
+            <TextField
+              isRequired
+              name="photoURL"
+              type="url"
+              validate={(value) => {
+                if (!value.trim()) return "Photo URL is required";
+                if (!/^https?:\/\/.*/i.test(value))
+                  return "Please enter a valid URL (https://...)";
+                return null;
+              }}
+            >
+              <Label className="mb-1 text-sm font-medium text-gray-900">
+                Photo URL
+              </Label>
+              <InputGroup className="rounded-md bg-gray-50/50">
+                <InputGroup.Prefix className="pl-3">
+                  <BiImageAdd className="size-5 text-gray-400" />
+                </InputGroup.Prefix>
+                <InputGroup.Input
+                  placeholder="Enter your photo URL"
+                  className="bg-transparent py-2.5 text-sm"
+                />
+              </InputGroup>
+              <FieldError />
+            </TextField>
+
             {/* Email Address */}
             <TextField
               isRequired
@@ -99,7 +153,7 @@ const SignUp = () => {
               className="w-full "
               isRequired
               name="password"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(value) => setPassword(value)}
               type="password"
               validate={(value) => {
                 if (value.length < 8) {

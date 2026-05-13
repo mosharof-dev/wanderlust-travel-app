@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Checkbox,
@@ -13,16 +14,32 @@ import { useState } from "react";
 import { BiEnvelope, BiLockAlt } from "react-icons/bi";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "sonner";
 
 const Login = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+    const user = Object.fromEntries(formData.entries());
 
-    console.log("Login Data:", data);
+    const { data, error } = await authClient.signIn.email({
+      name: user.fullName,
+      photoURL: user.photoURL,
+      email: user.email,
+      password: user.password,
+      callbackURL: "/",
+    });
+    if (error) {
+      toast.error(`Login Failed: ${error.message || "Invalid credentials!"}`);
+      console.log("Login Error:", error);
+    } else if (data) {
+      // Login success hole
+      toast.success("Welcome back! Login Successful. 🎉");
+    }
+
+    console.log(data, error);
   };
 
   return (
