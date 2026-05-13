@@ -8,7 +8,7 @@ const NotFound = () => {
     <div className="relative flex min-h-[80vh] w-full flex-col items-center justify-center overflow-hidden bg-white px-4 py-10">
       {/* Background Decorative Element */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <h1 className="text-[120px] sm:text-[150px] md:text-[250px] font-black leading-none tracking-tighter text-gray-50">
+        <h1 className="text-[120px] sm:text-[150px] md:text-[250px] font-black leading-none tracking-tighter text-gray-200">
           404
         </h1>
       </div>

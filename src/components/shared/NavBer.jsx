@@ -69,14 +69,18 @@ const NavBer = () => {
             <div className="w-20 h-8 bg-gray-200 animate-pulse rounded-full"></div>
           ) : user ? (
             <>
-              <Link href="/profile" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+              <Link
+                href="/profile"
+                className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+              >
                 <div
-                  className="w-10 h-10 rounded-full border-2 border-[#15A1BF] overflow-hidden shrink-0 shadow-sm"
+                  className="relative w-10 h-10 rounded-full border-2 border-[#15A1BF] overflow-hidden shrink-0 shadow-sm"
                   title={user?.name || "Profile"}
                 >
                   {user?.image ? (
-                    <img
+                    <Image
                       src={user.image}
+                      fill
                       alt="User Profile"
                       className="w-full h-full object-cover"
                     />
@@ -86,7 +90,9 @@ const NavBer = () => {
                     </div>
                   )}
                 </div>
-                <span className="font-semibold text-gray-800 text-base hidden sm:block">{user?.name || "Profile"}</span>
+                <span className="font-semibold text-gray-800 text-base hidden sm:block">
+                  {user?.name || "Profile"}
+                </span>
               </Link>
               <button
                 onClick={handleLogout}
@@ -156,8 +162,11 @@ const NavBer = () => {
             ) : user ? (
               <>
                 <li>
-                  <Link href="/profile" className="flex items-center gap-3 py-2">
-                    <div className="w-10 h-10 rounded-full border-2 border-[#15A1BF] overflow-hidden shrink-0">
+                  <Link
+                    href="/profile"
+                    className="flex items-center gap-3 py-2"
+                  >
+                    <div className="relative w-10 h-10 rounded-full border-2 border-[#15A1BF] overflow-hidden shrink-0">
                       {user?.image ? (
                         <img
                           src={user.image}
@@ -174,7 +183,9 @@ const NavBer = () => {
                       <span className="font-bold text-gray-800">
                         {user?.name || "Profile"}
                       </span>
-                      <span className="text-xs text-gray-500 font-normal">View Profile</span>
+                      <span className="text-xs text-gray-500 font-normal">
+                        View Profile
+                      </span>
                     </div>
                   </Link>
                 </li>

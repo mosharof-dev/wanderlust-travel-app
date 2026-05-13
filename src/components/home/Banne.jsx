@@ -30,10 +30,10 @@ const Banner = () => {
           </button>
         </div>
       </div>
-      {/* Bottom Search Bar t */}
-      <div className="relative z-10 w-full  container px-4 sm:px-6 lg:px-8  mt-12">
-        <div className="bg-white/20 backdrop-blur-md flex flex-col lg:flex-row items-center border border-white/20 shadow-lg h-18">
-          <div className="flex flex-col lg:flex-row w-full lg:flex-1 h-full items-center">
+      {/* Bottom Search Bar */}
+      <div className="relative z-10 w-full container px-4 sm:px-6 lg:px-8 mt-12 mb-10">
+        <div className="bg-white/20 backdrop-blur-md flex flex-col lg:flex-row items-center border border-white/20 shadow-lg lg:h-18 overflow-hidden rounded-lg lg:rounded-none">
+          <div className="flex flex-col lg:flex-row w-full lg:flex-1 lg:h-full items-center">
             {/* Location */}
             <div className="flex-1 w-full flex flex-col justify-center px-8 py-5 lg:h-24 text-left">
               <span className="text-white/90 text-sm font-medium mb-1">

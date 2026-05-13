@@ -52,6 +52,13 @@ const SignUp = () => {
     console.log(data, error);
   };
 
+  const signinWithGoogle = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+      // idToken: { token: idToken, accessToken },
+    });
+  };
+
   return (
     <div className="flex py-8 w-full items-center justify-center bg-gray-50 p-4 font-sans">
       <div className="w-full max-w-md">
@@ -272,6 +279,7 @@ const SignUp = () => {
 
           {/* Social Sign Up */}
           <Button
+            onClick={signinWithGoogle}
             variant="outline"
             className="flex w-full items-center justify-center gap-2 rounded-md border border-gray-200 bg-white py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
           >
