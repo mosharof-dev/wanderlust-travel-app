@@ -25,10 +25,9 @@ const Login = () => {
     const user = Object.fromEntries(formData.entries());
 
     const { data, error } = await authClient.signIn.email({
-      name: user.fullName,
-      photoURL: user.photoURL,
       email: user.email,
       password: user.password,
+      rememberMe: true,
       callbackURL: "/",
     });
     if (error) {

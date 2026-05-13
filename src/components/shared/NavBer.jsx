@@ -1,12 +1,14 @@
 "use client";
 import navLogo from "@/assets/Wanderlast.png";
+import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NavBer = () => {
   const pathname = usePathname();
-
+  const { session, isPending } = authClient.useSession();
+  const user = session?.user;
   // Active Link logic
   const linkStyle = (path) =>
     `font-medium transition-all ${
