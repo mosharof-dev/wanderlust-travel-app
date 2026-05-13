@@ -29,7 +29,7 @@ const SignUp = () => {
 
     const { data, error } = await authClient.signUp.email({
       name: user.fullName,
-      photoURL: user.photoURL,
+      image: user.photoURL,
       email: user.email,
       password: user.password,
       callbackURL: "/login",
