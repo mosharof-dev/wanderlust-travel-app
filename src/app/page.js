@@ -1,5 +1,8 @@
 import Banner from "@/components/home/Banne";
+import CTASection from "@/components/home/CTASection";
 import FeaturedDestinations from "@/components/home/FeaturedDestinations";
+import Testimonials from "@/components/home/Testimonials";
+import WhyChooseUs from "@/components/home/WhyChooseUs";
 
 export default async function Home() {
   let destinations = [];
@@ -15,9 +18,12 @@ export default async function Home() {
   }
 
   return (
-   <>
-    <Banner/>
-    <FeaturedDestinations destinations={destinations} />
-   </>
+    <>
+      <Banner />
+      <FeaturedDestinations destinations={destinations} />
+      <WhyChooseUs />
+      <Testimonials />
+      <CTASection />
+    </>
   );
 }
