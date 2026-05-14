@@ -13,6 +13,9 @@ const DestinationCard = ({ data }) => {
           fill
           className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
         />
+        <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1 text-sm font-medium text-gray-900 z-10">
+          {data.rating || "4.5"} <span>★</span>
+        </div>
       </div>
 
       {/* Content Container */}
