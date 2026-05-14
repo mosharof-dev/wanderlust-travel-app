@@ -31,6 +31,7 @@ const run = async () => {
     const adminCollection = admin.collection("admin");
     const bookingCollection = admin.collection("booking");
 
+    //  BOOKING API
     app.post("/bookings", async (req, res) => {
       const data = req.body;
       console.log(data, "data");
@@ -38,7 +39,22 @@ const run = async () => {
       console.log(result, "result");
       res.send(result);
     });
+    //  MY BOOKINGS API
+    app.get("/bookings/:userId", async (req, res) => {
+      const { userId } = req.params;
+      const query = { userId: userId };
+      const result = await bookingCollection.find(query).toArray();
+      res.send(result);
+    });
 
+    // Delete booking
+    app.delete("/bookings/:id", async (req, res) => {
+      const { id } = req.params;
+      const result = await bookingCollection.deleteOne({
+        _id: new ObjectId(id),
+      });
+      res.send(result);
+    });
     //  DESTINATION API
     app.get("/destinations", async (req, res) => {
       const result = await adminCollection.find().toArray();

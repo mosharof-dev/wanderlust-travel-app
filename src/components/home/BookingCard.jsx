@@ -4,6 +4,7 @@ import { Input, Label, TextField } from "@heroui/react";
 import { useState } from "react";
 
 import { FaCheck } from "react-icons/fa";
+import { toast } from "sonner";
 
 const BookingCard = ({ data }) => {
   const [dateValue, setValue] = useState(null);
@@ -23,7 +24,7 @@ const BookingCard = ({ data }) => {
       country: data.country,
       price: data.price,
       imageUrl: data.imageUrl,
-      departureDate: new Date(dateValue).toString(),
+      departureDate: new Date(dateValue),
     };
 
     const res = await fetch("http://localhost:5000/bookings", {
@@ -35,6 +36,7 @@ const BookingCard = ({ data }) => {
     });
     const result = await res.json();
     console.log(result);
+    toast.success(`🚀 Your ${data.destinationName} package is booked!`);
   };
 
   return (

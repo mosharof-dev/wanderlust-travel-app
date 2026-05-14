@@ -38,7 +38,7 @@ const NavBer = () => {
             </Link>
           </li>
           <li>
-            <Link href="/my-booking" className={linkStyle("/my-booking")}>
+            <Link href="/myBooking" className={linkStyle("/myBooking")}>
               My Booking
             </Link>
           </li>
