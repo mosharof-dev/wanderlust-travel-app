@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BiHash, BiXCircle } from "react-icons/bi";
+import { BiHash } from "react-icons/bi";
 import { BsEye } from "react-icons/bs";
 import { LiaCalendarDaySolid } from "react-icons/lia";
 import BookingDelete from "./BookingDelete";
@@ -71,7 +71,6 @@ const MyBookingCard = ({ booking }) => {
           <p className="text-teal-500 font-bold text-2xl">${price}</p>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            {/* Cancel & View Buttons */}
             {/* Cancel Button */}
             <BookingDelete data={booking} />
 

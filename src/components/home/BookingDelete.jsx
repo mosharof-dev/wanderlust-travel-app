@@ -2,6 +2,7 @@
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/navigation";
 import { BiXCircle } from "react-icons/bi";
+import { toast } from "sonner";
 
 const BookingDelete = ({ data }) => {
   const handleDelete = async () => {
@@ -12,8 +13,7 @@ const BookingDelete = ({ data }) => {
       },
     });
     const result = await res.json();
-    redirect("/destinations");
-    console.log(result);
+    redirect("/myBooking");
   };
 
   return (
