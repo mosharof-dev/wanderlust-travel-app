@@ -1,4 +1,7 @@
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
+const dns = require("node:dns");
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -62,7 +65,13 @@ const run = async () => {
       res.send(result);
     });
     // Details API
-    app.get("/destinations/:id", async (req, res) => {
+    app.get("/destinations/:id", (req, res, next) => {
+      const header = req.headers.authorization;
+      console.log(header);
+
+      next();
+
+    }, async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await adminCollection.findOne(query);
