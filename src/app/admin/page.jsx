@@ -22,7 +22,7 @@ const AdminDashboard = () => {
     const tokenRes = await fetch("/api/token");
     const { token } = await tokenRes.json();
 
-    const res = await fetch("http://localhost:5000/destinations", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

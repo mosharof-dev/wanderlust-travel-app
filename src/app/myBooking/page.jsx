@@ -15,7 +15,7 @@ const MyBooking = async () => {
   });
   const tokenValue = typeof tokenResponse === "object" ? tokenResponse?.token : tokenResponse;
 
-  const res = await fetch(`http://localhost:5000/bookings/${user?.id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${user?.id}`, {
     cache: "no-store",
     headers: {
       authorization: `Bearer ${tokenValue}`,

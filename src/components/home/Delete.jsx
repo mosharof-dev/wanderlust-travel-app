@@ -8,7 +8,7 @@ const Delete = ({ data }) => {
     const tokenRes = await fetch("/api/token");
     const { token } = await tokenRes.json();
 
-    const res = await fetch(`http://localhost:5000/destinations/${data._id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${data._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

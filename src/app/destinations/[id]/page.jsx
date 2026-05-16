@@ -11,7 +11,7 @@ const DetailPage = async ({ params }) => {
   // 1. Backend Logic
   const { id } = await params;
 
-  const res = await fetch(`http://localhost:5000/destinations/${id}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${id}`);
   const data = await res.json();
 
   // 2. Frontend Structure & Styling
