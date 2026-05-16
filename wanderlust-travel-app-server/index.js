@@ -4,6 +4,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
+const { createRemoteJWKSet, jwtVerify } = require("jose-cjs");
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -23,6 +24,40 @@ const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
+
+const JWKS = createRemoteJWKSet(
+  new URL('http://localhost:3000/api/auth/jwks')
+)
+// Verify Token Middleware
+const verifyToken = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  console.log(authHeader);
+  if (!authHeader) {
+    return res.status(401).send({ message: "Unauthorized" });
+  }
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  try {
+    const { payload } = await jwtVerify(token, JWKS)
+    console.log(payload);
+    next()
+  } catch (error) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  // jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+  //   if (err) {
+  //     return res.status(403).send({ message: "Forbidden" });
+  //   }
+  //   req.user = decoded;
+  //   next();
+  // });
+
+  // You must call next() so the request can continue!
+  next();
+};
 // Connect to MongoDB
 const run = async () => {
   try {
@@ -64,13 +99,7 @@ const run = async () => {
       res.send(result);
     });
     // Details API
-    app.get("/destinations/:id", (req, res, next) => {
-      const header = req.headers.authorization;
-      console.log(header);
-
-      next();
-
-    }, async (req, res) => {
+    app.get("/destinations/:id", verifyToken, async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const result = await adminCollection.findOne(query);

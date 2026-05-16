@@ -1,11 +1,9 @@
-import dns from "node:dns"
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBer from "@/components/shared/NavBer";
 import Footer from "@/components/shared/Footer";
 import { Toaster } from "sonner";
 
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
