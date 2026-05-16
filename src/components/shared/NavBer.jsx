@@ -149,7 +149,7 @@ const NavBer = () => {
               <Link href="/destinations">Destinations</Link>
             </li>
             <li>
-              <Link href="/my-booking">My Booking</Link>
+              <Link href="/myBooking">My Booking</Link>
             </li>
             <li>
               <Link href="/admin">Admin</Link>
