@@ -54,9 +54,6 @@ const verifyToken = async (req, res, next) => {
   //   req.user = decoded;
   //   next();
   // });
-
-  // You must call next() so the request can continue!
-  next();
 };
 // Connect to MongoDB
 const run = async () => {

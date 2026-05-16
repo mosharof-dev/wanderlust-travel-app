@@ -16,10 +16,13 @@ const DetailPage = async ({ params }) => {
    const token = await auth.api.getToken({
     headers: await headers()
    })
-   console.log(token);
+   const tokenValue = typeof token === "object" ? token?.token : token;
+
+   console.log(tokenValue, "Token Value");
+   console.log(token, "Just token");
   const res = await fetch(`http://localhost:5000/destinations/${id}`, {
     headers: {
-        authorization: `Bearer ${token}`
+        authorization: `Bearer ${tokenValue}`
     }
   });
   const data = await res.json();
@@ -45,11 +48,11 @@ const DetailPage = async ({ params }) => {
       {/* Hero Image Section */}
       <div className="relative w-full h-75 md:h-100 mb-10">
         <Image
-          src={data.imageUrl}
-          alt={data.destinationName}
+          src={data?.imageUrl}
+          alt={data?.destinationName}
           fill
           className="object-cover rounded"
-          sizes="(max-width: 768px) 100vw, 100vw"
+          // sizes="(max-width: 768px) 100vw, 100vw"
         />
       </div>
       {/* Content Layout */}
