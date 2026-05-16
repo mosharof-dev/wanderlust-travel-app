@@ -5,10 +5,14 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 
 const Delete = ({ data }) => {
   const handleDelete = async () => {
+    const tokenRes = await fetch("/api/token");
+    const { token } = await tokenRes.json();
+
     const res = await fetch(`http://localhost:5000/destinations/${data._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
       },
     });
     const result = await res.json();

@@ -10,8 +10,16 @@ const MyBooking = async () => {
 
   const user = session?.user;
 
+  const tokenResponse = await auth.api.getToken({
+    headers: await headers(),
+  });
+  const tokenValue = typeof tokenResponse === "object" ? tokenResponse?.token : tokenResponse;
+
   const res = await fetch(`http://localhost:5000/bookings/${user?.id}`, {
     cache: "no-store",
+    headers: {
+      authorization: `Bearer ${tokenValue}`,
+    },
   });
 
   const bookings = await res.json();

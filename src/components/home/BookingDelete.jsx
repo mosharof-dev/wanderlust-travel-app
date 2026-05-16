@@ -6,10 +6,14 @@ import { toast } from "sonner";
 
 const BookingDelete = ({ data }) => {
   const handleDelete = async () => {
+    const tokenRes = await fetch("/api/token");
+    const { token } = await tokenRes.json();
+
     const res = await fetch(`http://localhost:5000/bookings/${data._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
       },
     });
     const result = await res.json();

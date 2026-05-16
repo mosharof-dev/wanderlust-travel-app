@@ -23,10 +23,14 @@ const EditModal = ({ data }) => {
     const formData = new FormData(event.currentTarget);
     const updatedData = Object.fromEntries(formData.entries());
     // console.log("Form data:", data);
+    const tokenRes = await fetch("/api/token");
+    const { token } = await tokenRes.json();
+
     const res = await fetch(`http://localhost:5000/destinations/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(updatedData),
     });

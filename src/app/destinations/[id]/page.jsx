@@ -6,25 +6,12 @@ import { FaCalendarAlt, FaStar } from "react-icons/fa";
 import EditModal from "@/components/home/EditModal";
 import Delete from "@/components/home/Delete";
 import BookingCard from "@/components/home/BookingCard";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 
 const DetailPage = async ({ params }) => {
   // 1. Backend Logic
   const { id } = await params;
 
-   const token = await auth.api.getToken({
-    headers: await headers()
-   })
-   const tokenValue = typeof token === "object" ? token?.token : token;
-
-   console.log(tokenValue, "Token Value");
-   console.log(token, "Just token");
-  const res = await fetch(`http://localhost:5000/destinations/${id}`, {
-    headers: {
-        authorization: `Bearer ${tokenValue}`
-    }
-  });
+  const res = await fetch(`http://localhost:5000/destinations/${id}`);
   const data = await res.json();
 
   // 2. Frontend Structure & Styling

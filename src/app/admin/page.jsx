@@ -19,10 +19,14 @@ const AdminDashboard = () => {
     const formData = new FormData(event.currentTarget);
     const data = Object.fromEntries(formData.entries());
     console.log("Form data:", data);
+    const tokenRes = await fetch("/api/token");
+    const { token } = await tokenRes.json();
+
     const res = await fetch("http://localhost:5000/destinations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(data),
     });
