@@ -72,6 +72,7 @@ const NavBer = () => {
               <Link
                 href="/profile"
                 className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+                prefetch={false}
               >
                 <div
                   className="relative w-10 h-10 rounded-full border-2 border-[#15A1BF] overflow-hidden shrink-0 shadow-sm"
@@ -165,6 +166,7 @@ const NavBer = () => {
                   <Link
                     href="/profile"
                     className="flex items-center gap-3 py-2"
+                   
                   >
                     <div className="relative w-10 h-10 rounded-full border-2 border-[#15A1BF] overflow-hidden shrink-0">
                       {user?.image ? (

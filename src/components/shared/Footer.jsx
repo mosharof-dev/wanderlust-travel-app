@@ -82,7 +82,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-cyan-500 transition">
+                <Link href="#" className="hover:text-cyan-500 transition">
                   About Us
                 </Link>
               </li>
@@ -96,7 +96,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/my-booking"
+                  href="/myBooking"
                   className="hover:text-cyan-500 transition"
                 >
                   My Booking

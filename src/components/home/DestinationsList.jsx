@@ -37,7 +37,7 @@ const DestinationsList = ({ initialData }) => {
     <>
       {/* Filter Section */}
       <div className="flex flex-col md:flex-row items-center gap-4 border-y border-gray-200 py-4 mb-6">
-        <div className="flex items-center gap-2 text-gray-400 border-r border-gray-200 pr-4 hidden md:flex">
+        <div className="items-center gap-2 text-gray-400 border-r border-gray-200 pr-4 hidden md:flex">
           <HiOutlineAdjustmentsHorizontal className="w-5 h-5" />
           <span className="text-xs font-semibold uppercase tracking-widest">Filters</span>
         </div>
