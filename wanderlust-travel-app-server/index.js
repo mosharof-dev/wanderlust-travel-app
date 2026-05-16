@@ -66,7 +66,7 @@ const run = async () => {
     const bookingCollection = admin.collection("booking");
 
     //  BOOKING API
-    app.post("/bookings", async (req, res) => {
+    app.post("/bookings", verifyToken, async (req, res) => {
       const data = req.body;
       console.log(data, "data");
       const result = await bookingCollection.insertOne(data);
