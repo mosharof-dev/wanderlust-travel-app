@@ -75,7 +75,7 @@ const MyBookingCard = ({ booking }) => {
             {/* Cancel Button */}
             <BookingDelete data={booking} />
 
-            {/* View Button → destination detail page-এ নিয়ে যাবে */}
+            {/* View Button → destination detail page */}
             <Link
               href={`/destinations/${destinationId}`}
               className="flex-1 sm:flex-none flex justify-center items-center gap-1.5 px-6 py-2 text-sm font-medium text-white bg-teal-500 rounded-md hover:bg-teal-600 transition"
