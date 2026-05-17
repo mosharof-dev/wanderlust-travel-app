@@ -42,11 +42,13 @@ const NavBer = () => {
               My Booking
             </Link>
           </li>
-          <li>
-            <Link href="/admin" className={linkStyle("/admin")}>
-              Admin
-            </Link>
-          </li>
+         
+            <li>
+              <Link href="/admin" className={linkStyle("/admin")}>
+                Admin
+              </Link>
+            </li>
+          
         </ul>
 
         {/* 2. Logo (Desktop-e Center, Mobile-e Left) */}
@@ -152,9 +154,11 @@ const NavBer = () => {
             <li>
               <Link href="/myBooking">My Booking</Link>
             </li>
-            <li>
-              <Link href="/admin">Admin</Link>
-            </li>
+           
+              <li>
+                <Link href="/admin">Admin</Link>
+              </li>
+           
             <div className="divider my-0"></div>
             {isPending ? (
               <li className="flex justify-center py-2">

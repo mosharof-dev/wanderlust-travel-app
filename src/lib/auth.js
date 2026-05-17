@@ -24,7 +24,8 @@ export const auth = betterAuth({
   }),
   emailAndPassword: {
     enabled: true,
-  }, socialProviders: {
+  },
+  socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -37,7 +38,16 @@ export const auth = betterAuth({
       maxAge: 60 * 60 * 24 * 7,
     }
   },
-
+  user: {
+    
+    additionalFields: {
+      role: {
+        type: "string",
+        defaultValue: "user", 
+        fieldName: "role",    
+      },
+    },
+  },
   plugins: [
     jwt(),
   ]
