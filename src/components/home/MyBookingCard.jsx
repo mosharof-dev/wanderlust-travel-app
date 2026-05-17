@@ -1,11 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import { BiHash } from "react-icons/bi";
 import { BsEye } from "react-icons/bs";
 import { LiaCalendarDaySolid } from "react-icons/lia";
 import BookingDelete from "./BookingDelete";
 
 const MyBookingCard = ({ booking }) => {
-  const { _id, destinationName, price, imageUrl, departureDate, status } =
+  const { _id, destinationId, destinationName, price, imageUrl, departureDate, status } =
     booking;
 
   const formattedDate = new Date(departureDate).toLocaleDateString("en-US", {
@@ -74,11 +75,14 @@ const MyBookingCard = ({ booking }) => {
             {/* Cancel Button */}
             <BookingDelete data={booking} />
 
-            {/* View Button */}
-            <button className="flex-1 sm:flex-none flex justify-center items-center gap-1.5 px-6 py-2 text-sm font-medium text-white bg-teal-500 rounded-md hover:bg-teal-600 transition cursor-pointer">
+            {/* View Button → destination detail page-এ নিয়ে যাবে */}
+            <Link
+              href={`/destinations/${destinationId}`}
+              className="flex-1 sm:flex-none flex justify-center items-center gap-1.5 px-6 py-2 text-sm font-medium text-white bg-teal-500 rounded-md hover:bg-teal-600 transition"
+            >
               <BsEye size={16} />
               View
-            </button>
+            </Link>
           </div>
         </div>
       </div>
