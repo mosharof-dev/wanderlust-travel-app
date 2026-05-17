@@ -4,7 +4,7 @@ A modern full-stack travel booking web application built with **Next.js 16** and
 
 ## 🔗 Live Demo
 
-> 🚀 [Deployed on Vercel](https://wanderlust-travel-app.vercel.app)
+> 🚀 [Deployed on Vercel](https://wanderlust-travel-app-eight.vercel.app)
 
 ---
 
@@ -22,19 +22,19 @@ A modern full-stack travel booking web application built with **Next.js 16** and
 
 ## 🛠️ Tech Stack
 
-| Technology | Purpose |
-|---|---|
-| [Next.js 16](https://nextjs.org/) | React Framework (App Router) |
-| [React 19](https://react.dev/) | UI Library |
-| [Tailwind CSS v4](https://tailwindcss.com/) | Utility-first CSS |
-| [DaisyUI v5](https://daisyui.com/) | Tailwind Component Library |
-| [HeroUI](https://heroui.com/) | Additional UI Components |
-| [better-auth](https://www.better-auth.com/) | Authentication |
-| [React Hook Form](https://react-hook-form.com/) | Form Management |
-| [Swiper.js](https://swiperjs.com/) | Touch Slider / Carousel |
-| [Sonner](https://sonner.emilkowal.ski/) | Toast Notifications |
-| [React Icons](https://react-icons.github.io/react-icons/) | Icon Library |
-| [MongoDB](https://www.mongodb.com/) | Database (via better-auth adapter) |
+| Technology                                                | Purpose                            |
+| --------------------------------------------------------- | ---------------------------------- |
+| [Next.js 16](https://nextjs.org/)                         | React Framework (App Router)       |
+| [React 19](https://react.dev/)                            | UI Library                         |
+| [Tailwind CSS v4](https://tailwindcss.com/)               | Utility-first CSS                  |
+| [DaisyUI v5](https://daisyui.com/)                        | Tailwind Component Library         |
+| [HeroUI](https://heroui.com/)                             | Additional UI Components           |
+| [better-auth](https://www.better-auth.com/)               | Authentication                     |
+| [React Hook Form](https://react-hook-form.com/)           | Form Management                    |
+| [Swiper.js](https://swiperjs.com/)                        | Touch Slider / Carousel            |
+| [Sonner](https://sonner.emilkowal.ski/)                   | Toast Notifications                |
+| [React Icons](https://react-icons.github.io/react-icons/) | Icon Library                       |
+| [MongoDB](https://www.mongodb.com/)                       | Database (via better-auth adapter) |
 
 ---
 
@@ -95,7 +95,7 @@ src/
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/your-username/wanderlust-travel-app.git
+git clone https://github.com/mosharof-dev/wanderlust-travel-app.git
 cd wanderlust-travel-app
 ```
 
@@ -150,21 +150,22 @@ This project uses **[better-auth](https://www.better-auth.com/)** for authentica
 - Route protection is handled via `src/proxy.js`
 
 ### Roles
-| Role | Access |
-|---|---|
-| `user` | Browse destinations, book trips, manage own bookings |
+
+| Role    | Access                                                       |
+| ------- | ------------------------------------------------------------ |
+| `user`  | Browse destinations, book trips, manage own bookings         |
 | `admin` | All of the above + full destination CRUD via Admin Dashboard |
 
 ---
 
 ## 📜 Available Scripts
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run start` | Start production server |
-| `npm run lint` | Run ESLint |
+| Command         | Description              |
+| --------------- | ------------------------ |
+| `npm run dev`   | Start development server |
+| `npm run build` | Build for production     |
+| `npm run start` | Start production server  |
+| `npm run lint`  | Run ESLint               |
 
 ---
 
@@ -178,7 +179,7 @@ Make sure to add all `.env` variables to your Vercel project settings under **En
 
 ## 🤝 Related Repository
 
-- 🔧 **Backend:** [wanderlust-travel-app-server](https://github.com/your-username/wanderlust-travel-app-server)
+- 🔧 **Backend:** [wanderlust-travel-app-server](https://github.com/mosharof-dev/wanderlust-server)
 
 ---
 
