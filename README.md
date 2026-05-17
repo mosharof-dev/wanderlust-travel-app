@@ -1,36 +1,187 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌍 Wanderlust Travel App — Frontend
 
-## Getting Started
+A modern full-stack travel booking web application built with **Next.js 16** and **React 19**. Users can explore travel destinations, book trips, manage their bookings, and admins can manage destination content through a protected dashboard.
 
-First, run the development server:
+## 🔗 Live Demo
+
+> 🚀 [Deployed on Vercel](https://wanderlust-travel-app.vercel.app)
+
+---
+
+## ✨ Features
+
+- 🏖️ Browse travel destinations with details
+- 📅 Book trips with a simple booking flow
+- 📋 View and cancel your own bookings
+- 🔐 Secure authentication (Sign Up / Login) via **better-auth**
+- 👑 Admin dashboard for destination management (CRUD)
+- 🛡️ Role-based access control (Admin vs Regular User)
+- 📱 Fully responsive design
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| [Next.js 16](https://nextjs.org/) | React Framework (App Router) |
+| [React 19](https://react.dev/) | UI Library |
+| [Tailwind CSS v4](https://tailwindcss.com/) | Utility-first CSS |
+| [DaisyUI v5](https://daisyui.com/) | Tailwind Component Library |
+| [HeroUI](https://heroui.com/) | Additional UI Components |
+| [better-auth](https://www.better-auth.com/) | Authentication |
+| [React Hook Form](https://react-hook-form.com/) | Form Management |
+| [Swiper.js](https://swiperjs.com/) | Touch Slider / Carousel |
+| [Sonner](https://sonner.emilkowal.ski/) | Toast Notifications |
+| [React Icons](https://react-icons.github.io/react-icons/) | Icon Library |
+| [MongoDB](https://www.mongodb.com/) | Database (via better-auth adapter) |
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── page.js                  # Home Page
+│   ├── layout.js                # Root Layout
+│   ├── loading.jsx              # Loading UI
+│   ├── not-found.jsx            # 404 Page
+│   ├── globals.css              # Global Styles
+│   ├── admin/                   # Admin Dashboard (role-protected)
+│   ├── destinations/            # All Destinations & Detail pages
+│   ├── login/                   # Login Page
+│   ├── sign-up/                 # Sign Up Page
+│   ├── profile/                 # User Profile Page
+│   ├── my-booking/              # My Bookings Page
+│   └── api/
+│       └── auth/                # better-auth API routes
+│
+├── components/
+│   ├── shared/
+│   │   ├── NavBer.jsx           # Navbar (role-aware)
+│   │   └── Footer.jsx           # Footer
+│   └── home/
+│       ├── Banne.jsx            # Hero Banner
+│       ├── FeaturedDestinations.jsx
+│       ├── DestinationsList.jsx
+│       ├── DestinationCard.jsx
+│       ├── EditModal.jsx        # Admin edit modal
+│       ├── Delete.jsx           # Admin delete action
+│       ├── BookingCard.jsx
+│       ├── BookingDelete.jsx
+│       ├── MyBookingCard.jsx
+│       ├── Testimonials.jsx
+│       ├── WhyChooseUs.jsx
+│       └── CTASection.jsx
+│
+└── lib/
+    ├── auth.js                  # better-auth server config
+    └── auth-client.js           # better-auth client config
+```
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js `v18+`
+- MongoDB Atlas account
+- Backend server running (see [wanderlust-travel-app-server](../wanderlust-travel-app-server))
+
+### Installation
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/your-username/wanderlust-travel-app.git
+cd wanderlust-travel-app
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Setup environment variables**
+
+Create a `.env.local` file in the root:
+
+```env
+# App URL
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# Backend API URL
+NEXT_PUBLIC_API_URL=http://localhost:5000
+
+# better-auth secret
+BETTER_AUTH_SECRET=your_secret_key_here
+
+# MongoDB connection
+MONGODB_URI=your_mongodb_connection_string
+
+# (Optional) Social auth providers
+GITHUB_CLIENT_ID=
+GITHUB_CLIENT_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+```
+
+4. **Run the development server**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔐 Authentication & Authorization
 
-## Learn More
+This project uses **[better-auth](https://www.better-auth.com/)** for authentication.
 
-To learn more about Next.js, take a look at the following resources:
+- Users can **Sign Up / Login** with email & password
+- Session tokens are issued as **JWTs** and verified by the backend via **JWKS**
+- The **Navbar** conditionally shows the `Admin` link based on the user's role
+- The `/admin` route is protected — non-admin users see an **Access Denied** page
+- Route protection is handled via `src/proxy.js`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Roles
+| Role | Access |
+|---|---|
+| `user` | Browse destinations, book trips, manage own bookings |
+| `admin` | All of the above + full destination CRUD via Admin Dashboard |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📜 Available Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🌐 Deployment
+
+This app is deployed on **[Vercel](https://vercel.com/)**.
+
+Make sure to add all `.env` variables to your Vercel project settings under **Environment Variables**.
+
+---
+
+## 🤝 Related Repository
+
+- 🔧 **Backend:** [wanderlust-travel-app-server](https://github.com/your-username/wanderlust-travel-app-server)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
